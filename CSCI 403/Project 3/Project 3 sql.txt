@@ -1,0 +1,67 @@
+
+Stage 1:
+step 1
+drop table if exists books1;
+
+create table books1 (
+"Number" integer,
+"Title" varchar(100),
+"ISBN" varchar(100),
+"Publication Date" Date,
+"Pages" integer);
+
+step 2
+insert into books1 ("Number","Title","ISBN","Publication Date", "Pages")
+Values (1,'Harry Potter and the Philosopher''s Stone','0-7475-3269-9','1997-06-26',223);
+
+
+insert into books1 ("Number","Title","ISBN","Publication Date", "Pages")
+Values (2,'Harry Potter and the Chamber of Secrets','0-7475-3849-2','1998-07-02',251),
+(3,'Harry Potter and the Prisoner of Azkaban','0-7475-4215-5','1999-07-08',317),
+(4,'Harry Potter and the Goblet of Fire','0-7475-4624-X','2000-07-08',636),
+(5,'Harry Potter and the Order of the Phoenix','0-7475-5100-6','2003-06-21',766),
+(6,'Harry Potter and the Half-Blood Prince','0-7475-8108-8','2005-07-16',607),
+(7,'Harry Potter and the Deathly Hallows','0-545-01022-5','2007-07-21',607),
+
+insert into books1 ("Number","Title","ISBN","Publication Date") Values
+(8,'Harry Potter and the Bunnies of Doom','1-234-56789-0','2010-01-15')
+
+Step 3
+delete from books1 where "Number"=8;
+
+step 4 na
+
+Stage 2:
+step 5
+create table  books2 as (select * from project3_us_books);
+
+Stage 3:
+step 6:
+create table books (
+number integer primary key,
+title varchar(100) not null,
+isbn varchar(100) not null,
+publicationdate date not null,
+pages integer,
+ustitle varchar(100),
+uspublicationdate date,
+uspages integer,
+unique (isbn)
+);
+
+step 7:
+insert into books (number, title, isbn, publicationdate, pages, ustitle, uspublicationdate,uspages) 
+select a."Number",a."Title",a."ISBN",a."Publication Date",a."Pages",null,b.publicationdate,b.pages
+from books1 a 
+full join books2 b
+on a."Number"=b.number;
+
+step 8:
+update books
+set ustitle=title;
+
+step 9:
+update books
+set ustitle='Harry Potter and the Sorceror''s Stone'
+where title='Harry Potter and the Philosopher''s Stone';
+

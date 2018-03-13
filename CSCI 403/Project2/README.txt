@@ -1,0 +1,3 @@
+Worked alone
+This was a good way to test basic joins and searches it started slow and gave good escalation into more indepth parts of the select. It would be nice to have a completed sql document to compare to as I included the question the code to run it as well as the results and that might not have been what you wanted but I thought it would be a good idea to include. If I don't need to transfer the results and questions into the file let me know or just let me know whichever way is easier/better for you.
+This took around an hour or so.
